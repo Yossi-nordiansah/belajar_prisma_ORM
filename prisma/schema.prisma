@@ -26,3 +26,5 @@ model Customer {
 
   @@map("customers") //nama model Customer, berikan @@map agar jika mau nama tabel berbeda dengan nama model
 }
+
+//pastikan setelah membuat model langsung generate ulang "npx prisma generate"
