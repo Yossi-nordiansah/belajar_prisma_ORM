@@ -15,10 +15,22 @@ describe("prisma client", () => {
                     email: "yossi.nordiansah07@gmail.com",
                     name: "Yossi Nordiansah",
                     phone: "085655230898"
-                }
+                },
+                {
+                    id: "47yr735myt",
+                    email: "yossi.nordiansah24@gmail.com",
+                    name: "Hardi",
+                    phone: "085655230821"
+                },
+                {
+                    id: "47xr835myt",
+                    email: "yossi.nordiansah09@gmail.com",
+                    name: "Susilah",
+                    phone: "085655230816"
+                },
             ]
         });
-        expect(count).toBe(2);
+        expect(count).toBe(4);
     });
 
     it('should can update many records', async () => {
@@ -45,7 +57,7 @@ describe("prisma client", () => {
     it('should can read many records', async () => {
         const customer = await prismaClient.customer.findMany({});
         console.log(customer);
-        expect(customer.length).toBe(2);
+        expect(customer.length).toBe(4);
     });//delete many sifatnya sama dengan update many 
 
 });
