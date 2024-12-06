@@ -43,3 +43,12 @@ VALUES ('P0006', 'A', 1000, 100, 'K2'),
     name VARCHAR(100) NOT NULL,
     PRIMARY KEY(id)
 ) ENGINE InnoDB;
+
+CREATE TABLE wallet (
+    id VARCHAR(100) not null,
+    balance int not null,
+    customer_id VARCHAR(100) not null,
+    primary key (id),
+    constraint wallet_customer_id_fk FOREIGN KEY (customer_id) REFERENCES customers (id),
+    constraint wallet_customer_id_unique UNIQUE (customer_id) 
+) ENGINE Innodb

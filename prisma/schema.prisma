@@ -23,8 +23,18 @@ model Customer {
   name String
   email String @unique
   phone String  @unique
+  wallet Wallet? //artinya customer bisa memiliki wallet bisa tidak
 
   @@map("customers") //nama model Customer, berikan @@map agar jika mau nama tabel berbeda dengan nama model
+}
+
+model Wallet {
+  id String @id @db.VarChar(100)
+  balance Int @db.Int
+  customer_id String @unique @db.VarChar(100)
+  customer Customer @relation(fields: [customer_id], references: [id])
+
+  @@map("wallet")
 }
 
 model Product{
@@ -43,3 +53,18 @@ model Category{
 
   @@map("categories")
 }
+
+//lakukan seperti dibawah jika koneksi sudah ada di database
+
+// model Kategori {
+//   id      Int      @id @default(autoincrement())
+//   nama    String
+//   produk  Produk[] @relation("KategoriProduk")
+// }
+
+// model Produk {
+//   id          Int      @id @default(autoincrement())
+//   nama        String
+//   kategoriId  Int
+//   kategori    Kategori @relation("KategoriProduk", fields: [kategoriId], references: [id])
+// }
