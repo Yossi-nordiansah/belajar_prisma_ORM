@@ -24,9 +24,21 @@ model Customer {
   email String @unique
   phone String  @unique
   wallet Wallet? //artinya customer bisa memiliki wallet bisa tidak
+  comment Comment[] //relasi one to Many, satu customer dapat memiliki banyak commet, maka itu menggunakan []
 
   @@map("customers") //nama model Customer, berikan @@map agar jika mau nama tabel berbeda dengan nama model
 }
+
+model Comment {
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(100)
+  description String @db.Text
+  customer_id String @db.VarChar(100)
+  customer Customer @relation(fields: [customer_id], references: [id])
+
+  @@map("comments")
+}
+
 
 model Wallet {
   id String @id @db.VarChar(100)
@@ -54,12 +66,13 @@ model Category{
   @@map("categories")
 }
 
+
 //lakukan seperti dibawah jika koneksi sudah ada di database
 
 // model Kategori {
 //   id      Int      @id @default(autoincrement())
 //   nama    String
-//   produk  Produk[] @relation("KategoriProduk")
+//   produk  Produk[] @relation("KategoriProduk") //tanda [] artinya one to many, 1 kategori dapat diisi beberapa produk
 // }
 
 // model Produk {

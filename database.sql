@@ -52,3 +52,20 @@ CREATE TABLE wallet (
     constraint wallet_customer_id_fk FOREIGN KEY (customer_id) REFERENCES customers (id),
     constraint wallet_customer_id_unique UNIQUE (customer_id) 
 ) ENGINE Innodb
+
+CREATE TABLE comments (
+    id INT not null AUTO_INCREMENT,
+    customer_id VARCHAR(100) not null,
+    title VARCHAR(100) not null,
+    description TEXT,
+    primary key (id),
+    CONSTRAINT comments_customer_id_fk FOREIGN KEY (customer_id) REFERENCES customers (id)
+) ENGINE Innodb;
+
+INSERT INTO comments(customer_id, title, description)
+ VALUES ('47xr835myt', "Comment 1", 'sample comment 1'),
+('47yr735myt', "Comment 2", 'sample comment 2'),
+('47yr835myt', "Comment 3", 'sample comment 3'),
+('47yr835uyt', "Comment 4", 'sample comment 4')
+
+ALTER TABLE wallet ADD CONSTRAINT UNIQUE (customer_id);
