@@ -25,6 +25,7 @@ model Customer {
   phone String  @unique
   wallet Wallet? //artinya customer bisa memiliki wallet bisa tidak
   comment Comment[] //relasi one to Many, satu customer dapat memiliki banyak commet, maka itu menggunakan []
+  likes Like[] 
 
   @@map("customers") //nama model Customer, berikan @@map agar jika mau nama tabel berbeda dengan nama model
 }
@@ -55,6 +56,7 @@ model Product{
   price Int
   stock Int
   category String
+  likedby Like[]
 
   @@map("products")
 }
@@ -64,6 +66,16 @@ model Category{
   name String @db.VarChar(100)
 
   @@map("categories")
+}
+
+model Like {
+  customer_id String @db.VarChar(100)
+  product_id String @db.VarChar(100)
+  customer Customer @relation(fields: [customer_id], references: [id])
+  product Product @relation(fields: [product_id], references: [id])
+
+  @@id([customer_id, product_id])
+  @@map("likes")
 }
 
 

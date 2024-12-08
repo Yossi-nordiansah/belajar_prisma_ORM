@@ -69,3 +69,16 @@ INSERT INTO comments(customer_id, title, description)
 ('47yr835uyt', "Comment 4", 'sample comment 4')
 
 ALTER TABLE wallet ADD CONSTRAINT UNIQUE (customer_id);
+
+ALTER TABLE products
+ADD PRIMARY KEY (id);
+
+
+create table likes (
+    customer_id VARCHAR(100) not null,
+    product_id VARCHAR(100) not null,
+    PRIMARY KEY (customer_id, product_id),
+    constraint likes_customer_id_fk FOREIGN KEY (customer_id) REFERENCES customers (id),
+    constraint likes_product_id_fk FOREIGN KEY (product_id) REFERENCES products (id)
+) engine innodb;
+
