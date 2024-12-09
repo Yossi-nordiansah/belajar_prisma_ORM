@@ -26,6 +26,7 @@ model Customer {
   wallet Wallet? //artinya customer bisa memiliki wallet bisa tidak
   comment Comment[] //relasi one to Many, satu customer dapat memiliki banyak commet, maka itu menggunakan []
   likes Like[] 
+  loves Product[] @relation("loves")
 
   @@map("customers") //nama model Customer, berikan @@map agar jika mau nama tabel berbeda dengan nama model
 }
@@ -57,6 +58,7 @@ model Product{
   stock Int
   category String
   likedby Like[]
+  lovedby Customer[] @relation("loves")
 
   @@map("products")
 }

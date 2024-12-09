@@ -82,3 +82,11 @@ create table likes (
     constraint likes_product_id_fk FOREIGN KEY (product_id) REFERENCES products (id)
 ) engine innodb;
 
+create table _loves (
+    A VARCHAR(100) not null,
+    B VARCHAR(100) not null,
+    PRIMARY KEY (A, B),
+    constraint customer_loves_fk FOREIGN KEY (A) REFERENCES customers(id),
+    constraint product_loves_fk FOREIGN KEY (A) REFERENCES products(id)
+) engine Innodb;
+
