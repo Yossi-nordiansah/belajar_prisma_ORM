@@ -90,3 +90,6 @@ create table _loves (
     constraint product_loves_fk FOREIGN KEY (A) REFERENCES products(id)
 ) engine Innodb;
 
+create database belajar_nodejs_prisma;
+
+use belajar_nodejs_prisma
