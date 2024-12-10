@@ -96,3 +96,5 @@ model Like {
 //   kategoriId  Int
 //   kategori    Kategori @relation("KategoriProduk", fields: [kategoriId], references: [id])
 // }
+
+//masukkan perintah "npx prisma db pull" untuk melakukan database first migrate
